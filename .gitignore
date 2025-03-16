@@ -1,0 +1,51 @@
+# Binary
+video-watcher
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with go test -c
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# Application specific
+videos/*
+compressed/*
+done/*
+*.mp4
+video-watcher.log
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Debug files
+debug/
+
+# Environment files
+.env
+*.env
+
+# Keep directory structure but ignore contents
+!videos/.gitkeep
+!compressed/.gitkeep
+!done/.gitkeep 
