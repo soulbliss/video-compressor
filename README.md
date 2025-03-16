@@ -108,6 +108,8 @@ launchctl load ~/Library/LaunchAgents/com.video.watcher.plist
 
 ### Managing the Service
 
+#### Basic Service Control
+
 - **Start the service:**
 ```bash
 launchctl load ~/Library/LaunchAgents/com.video.watcher.plist
@@ -118,9 +120,55 @@ launchctl load ~/Library/LaunchAgents/com.video.watcher.plist
 launchctl unload ~/Library/LaunchAgents/com.video.watcher.plist
 ```
 
+- **Restart the service (after code updates):**
+```bash
+launchctl unload ~/Library/LaunchAgents/com.video.watcher.plist
+launchctl load ~/Library/LaunchAgents/com.video.watcher.plist
+```
+
 - **Check if running:**
 ```bash
 launchctl list | grep com.video.watcher
+```
+If no output is shown, the service is not running.
+
+#### Updating the Service
+
+When you make changes to the code:
+
+1. Stop the service:
+```bash
+launchctl unload ~/Library/LaunchAgents/com.video.watcher.plist
+```
+
+2. Rebuild the binary:
+```bash
+go build -o video-watcher
+```
+
+3. Start the service again:
+```bash
+launchctl load ~/Library/LaunchAgents/com.video.watcher.plist
+```
+
+#### Uninstalling the Service
+
+To completely remove the service:
+
+1. Stop and unload the service:
+```bash
+launchctl unload ~/Library/LaunchAgents/com.video.watcher.plist
+```
+
+2. Remove the LaunchAgent configuration:
+```bash
+rm ~/Library/LaunchAgents/com.video.watcher.plist
+```
+
+3. Optionally, remove the binary and directories:
+```bash
+rm video-watcher
+rm -rf videos compressed done
 ```
 
 - **View logs:**

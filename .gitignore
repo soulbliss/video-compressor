@@ -49,3 +49,5 @@ debug/
 !videos/.gitkeep
 !compressed/.gitkeep
 !done/.gitkeep 
+
+.video-watcher
