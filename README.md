@@ -86,6 +86,11 @@ cat > ~/Library/LaunchAgents/com.video.watcher.plist << EOL
         </array>
         <key>WorkingDirectory</key>
         <string>REPLACE_WITH_YOUR_PATH</string>
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>PATH</key>
+            <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        </dict>
         <key>RunAtLoad</key>
         <true/>
         <key>KeepAlive</key>
@@ -99,7 +104,7 @@ cat > ~/Library/LaunchAgents/com.video.watcher.plist << EOL
 EOL
 ```
 
-Replace `REPLACE_WITH_YOUR_PATH` with your actual path from step 2.
+Replace `REPLACE_WITH_YOUR_PATH` with your actual path from step 2. The `EnvironmentVariables` section is important as it ensures the service can find the `ffmpeg` executable.
 
 5. Load the service:
 ```bash
@@ -200,11 +205,13 @@ The daemon is lightweight, using approximately:
    - Check the log file: `cat /tmp/video-watcher.log`
    - Verify the paths in the plist file
    - Ensure the binary has execute permissions: `chmod +x video-watcher`
+   - Make sure the `EnvironmentVariables` section in the plist file includes the correct PATH to ffmpeg
 
 2. If videos aren't being compressed:
    - Check if FFmpeg is installed: `which ffmpeg`
    - Verify the `videos` directory exists
    - Check the log file for errors
+   - If you see "ffmpeg not found" errors, verify the PATH in the plist file includes the directory where ffmpeg is installed (usually `/opt/homebrew/bin` or `/usr/local/bin`)
 
 ## Contributing
 
