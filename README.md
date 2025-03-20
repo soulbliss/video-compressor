@@ -212,6 +212,9 @@ The daemon is lightweight, using approximately:
    - Verify the `videos` directory exists
    - Check the log file for errors
    - If you see "ffmpeg not found" errors, verify the PATH in the plist file includes the directory where ffmpeg is installed (usually `/opt/homebrew/bin` or `/usr/local/bin`)
+  
+## To do
+1. Add file size limit with options. Feedback from [Antony](https://x.com/antduchofficial/status/1901595068504346807)
 
 ## Contributing
 
